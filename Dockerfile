@@ -36,8 +36,5 @@ COPY ./script .
 RUN chmod 755 ./script
 
 CMD ./script $ENV_TOKEN
-# ENTRYPOINT cloudflared tunnel --no-autoupdate run --token $ENV_TOKEN 
-#CMD cloudflared tunnel --no-autoupdate run --token $ENV_TOKEN 
-#CMD ["/usr/sbin/sshd","-D"]
 
 
