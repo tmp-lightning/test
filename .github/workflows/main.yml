@@ -13,5 +13,5 @@ jobs:
       - name: Build
         run: docker build . --file Dockerfile --build-arg "TOKEN=${{ secrets.TOKEN }}" -t test
       - name: Run
-        run: docker run -it --name=test test 
+        run: docker run -i --name=test test 
           
