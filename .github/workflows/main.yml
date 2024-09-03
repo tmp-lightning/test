@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check
-        run: pwd && ls -la
+        run: pwd && ls -la ../
       - name: Build
         run: docker build --build-arg "TOKEN=${{ secrets.TOKEN }}" -t test < Dockerfile
       - name: Run
