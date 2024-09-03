@@ -8,8 +8,7 @@
 FROM ubuntu:22.04
 
 ARG TOKEN
-
-RUN export TOKEN=$TOKEN
+ENV ENV_TOKEN=$TOKEN
 
 # Install.
 RUN \
@@ -18,14 +17,27 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y curl git htop man unzip vim wget iputils-ping && \
-  rm -rf /var/lib/apt/lists/*
+  apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
 
+# cloudflared
 RUN \
   curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
-  dpkg -i cloudflared.deb 
-  
+  dpkg -i cloudflared.deb
 
-ENTRYPOINT ["cloudflared", "tunnel", "--no-autoupdate", "run", "--token", $TOKEN]
+# SSH
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
+RUN echo 'test:test' | chpasswd
+RUN echo 'test ALL=(ALL) NOPASSWD: ALL' | tee -a /etc/sudoers
+RUN service ssh start
+EXPOSE 22
+
+COPY ./script .
+
+RUN chmod 755 ./script
+
+CMD ./script $ENV_TOKEN
+# ENTRYPOINT cloudflared tunnel --no-autoupdate run --token $ENV_TOKEN 
+#CMD cloudflared tunnel --no-autoupdate run --token $ENV_TOKEN 
+#CMD ["/usr/sbin/sshd","-D"]
 
 
