@@ -9,10 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: check
-        run: pwd && ls -la ../
+      - uses: actions/checkout@v2
       - name: Build
-        run: docker build --build-arg "TOKEN=${{ secrets.TOKEN }}" -t test < Dockerfile
+        run: docker build . --file Dockerfile --build-arg "TOKEN=${{ secrets.TOKEN }}" -t test
       - name: Run
         run: docker run -it --name=test test 
           
