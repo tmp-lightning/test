@@ -1,0 +1,14 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every time
+        run: docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token ${{ secrets.TOKEN }}
+          
