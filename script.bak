@@ -4,8 +4,7 @@
 set -m
 
 # Start the primary process and put it in the background
-tmux new-session -s CF -d
-tmux send -t CF 'cloudflared tunnel --no-autoupdate run --token $1' ENTER
+cloudflared tunnel --no-autoupdate run --token $1 &
 
 # Start the helper process
 /usr/sbin/sshd -D
@@ -18,4 +17,4 @@ tmux send -t App 'sudo python3 main.py' ENTER
 
 # now we bring the primary process back into the foreground
 # and leave it there
-tmux attach-seesion -t CF
+fg %1
