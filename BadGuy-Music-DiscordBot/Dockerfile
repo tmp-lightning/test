@@ -7,11 +7,9 @@
 # Pull base image.
 FROM ubuntu:22.04
 
-ARG CF_TOKEN
 ARG DC_TOKEN
 ARG SPF_CID
 ARG SPF_SECRET
-ENV ENV_CF_TOKEN=$CF_TOKEN
 ENV ENV_DC_TOKEN=$DC_TOKEN
 ENV ENV_SPF_CID=$SPF_CID
 ENV ENV_SPF_SECRET=$SPF_SECRET
@@ -28,11 +26,6 @@ RUN \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
-
-# Cloudflared
-RUN \
-  curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
-  dpkg -i cloudflared.deb
 
 # SSH
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
@@ -81,12 +74,8 @@ RUN echo '    "secret": "'"$ENV_SPF_SECRET"'"' >> ./App/authentication/config.js
 RUN echo '  }' >> ./App/authentication/config.json 
 RUN echo '}' >> ./App/authentication/config.json 
 
-# Run in tmux
-#RUN \
-#  tmux new-session -s App -d "python3 ./App/main.py"
-
 # ---
-# Start Tunnel
-CMD ./script $ENV_CF_TOKEN
+# Start BadGuy-Music-DiscordBot
+CMD ./script
 # ---
 

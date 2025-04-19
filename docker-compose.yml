@@ -1,0 +1,12 @@
+services:
+  cloudflared:
+    build:
+      context: cloudflared
+      dockerfile: ./Dockerfile
+    ports:
+      - "22:22"
+
+  badguy-music-discordbot:
+    build:
+      context: BadGuy-Music-DiscordBot
+      dockerfile: ./Dockerfile

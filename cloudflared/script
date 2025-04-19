@@ -11,9 +11,6 @@ cloudflared tunnel --no-autoupdate run --token $1 &
 
 # the my_helper_process might need to know how to wait on the
 # primary process to start before it does its work and returns
-tmux new-session -s App -d 
-tmux send -t App 'cd /App' ENTER
-tmux send -t App 'sudo python3 main.py' ENTER
 
 # now we bring the primary process back into the foreground
 # and leave it there
