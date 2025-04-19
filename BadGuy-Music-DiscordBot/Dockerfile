@@ -54,7 +54,7 @@ RUN \
 
 # Install Dependency
 RUN \
-  apt-get install -y tmux ffmpeg
+  apt-get install -y ffmpeg libxdamage1 xdg-utils
 
 # Install Chrome
 RUN \
