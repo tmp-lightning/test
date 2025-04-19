@@ -7,8 +7,18 @@
 # Pull base image.
 FROM ubuntu:22.04
 
-ARG TOKEN
-ENV ENV_TOKEN=$TOKEN
+ARG CF_TOKEN
+ARG DC_TOKEN
+ARG SPF_CID
+ARG SPF_SECRET
+ENV ENV_CF_TOKEN=$CF_TOKEN
+ENV ENV_DC_TOKEN=$DC_TOKEN
+ENV ENV_SPF_CID=$SPF_CID
+ENV ENV_SPF_SECRET=$SPF_SECRET
+
+#
+# Initial OS
+#
 
 # Install.
 RUN \
@@ -19,7 +29,7 @@ RUN \
   apt-get install -y software-properties-common && \
   apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
 
-# cloudflared
+# Cloudflared
 RUN \
   curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
   dpkg -i cloudflared.deb
@@ -35,6 +45,49 @@ COPY ./script .
 
 RUN chmod 755 ./script
 
-CMD ./script $ENV_TOKEN
+#
+# BadGuy-Music-DiscordBot
+#
 
+# Install Python3.10
+RUN \
+  add-apt-repository ppa:deadsnakes/ppa && \
+  apt-get update && \
+  apt-get install -y python3.10 python3.10-venv python3.10-dev
+
+# Install PIP
+RUN \
+  curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+
+# Install Dependency
+RUN \
+  apt-get install -y tmux ffmpeg
+
+# Download source code
+RUN \
+  git clone https://github.com/miracleexotic/BadGuy-Music-DiscordBot.git ./App/ && \
+  python3 -m pip install -r ./App/requirements.txt
+
+# Create Credential
+RUN \
+  mkdir -p ./App/authentication && \
+  cat <<'EOF' >> ./App/authentication/config.json \
+  { \
+    "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want", \
+    "token" : "$ENV_DC_TOKEN", \
+    "spotify": { \
+        "cid": "$ENV_SPF_CID", \
+        "secret": "$ENV_SPF_SECRET" \
+    } \
+  } \
+  EOF
+
+# Run in tmux
+RUN \
+  tmux new-session -s App -d "python3 ./App/main.py"
+
+# ---
+# Start Tunnel
+CMD ./script $ENV_TOKEN
+# ---
 
