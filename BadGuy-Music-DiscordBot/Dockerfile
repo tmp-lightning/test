@@ -54,7 +54,7 @@ RUN \
 
 # Install Dependency
 RUN \
-  apt-get install -y ffmpeg libxdamage1 xdg-utils fonts-liberation libnspr4 libnss3 libvulkan1 
+  apt-get install -y ffmpeg libxdamage1 xdg-utils fonts-liberation libnspr4 libnss3 libvulkan1 libxss1 libappindicator3-1 libindicator7 
 
 # Install Chrome
 RUN \
