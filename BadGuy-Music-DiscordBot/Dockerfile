@@ -46,7 +46,7 @@ RUN chmod 755 ./script
 RUN \
   add-apt-repository ppa:deadsnakes/ppa && \
   apt-get update && \
-  apt-get install -y python3.10 python3.10-venv python3.10-dev
+  apt-get install -y python3.10 python3.10-venv python3.10-dev 
 
 # Install PIP
 RUN \
@@ -55,6 +55,13 @@ RUN \
 # Install Dependency
 RUN \
   apt-get install -y tmux ffmpeg
+
+# Install Chrome
+RUN \
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+  sudo dpkg -i google-chrome-stable_current_amd64.deb && \
+  sudo apt --fix-broken install && \
+  sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 # Download source code
 RUN \
