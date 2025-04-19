@@ -82,8 +82,8 @@ RUN echo '  }' >> ./App/authentication/config.json
 RUN echo '}' >> ./App/authentication/config.json 
 
 # Run in tmux
-RUN \
-  tmux new-session -s App -d "python3 ./App/main.py"
+#RUN \
+#  tmux new-session -s App -d "python3 ./App/main.py"
 
 # ---
 # Start Tunnel
