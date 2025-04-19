@@ -74,10 +74,10 @@ RUN \
 
 RUN echo '{' >> ./App/authentication/config.json 
 RUN echo '  "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want",' >> ./App/authentication/config.json
-RUN echo '  "token" : '"$ENV_DC_TOKEN"',' >> ./App/authentication/config.json
+RUN echo '  "token" : "'"$ENV_DC_TOKEN"'",' >> ./App/authentication/config.json
 RUN echo '  "spotify": {' >> ./App/authentication/config.json
-RUN echo '    "cid": '"$ENV_SPF_CID"',' >> ./App/authentication/config.json
-RUN echo '    "secret": '"$ENV_SPF_SECRET" >> ./App/authentication/config.json 
+RUN echo '    "cid": "'"$ENV_SPF_CID"'",' >> ./App/authentication/config.json
+RUN echo '    "secret": "'"$ENV_SPF_SECRET"'"' >> ./App/authentication/config.json 
 RUN echo '  }' >> ./App/authentication/config.json 
 RUN echo '}' >> ./App/authentication/config.json 
 
