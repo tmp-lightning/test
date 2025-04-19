@@ -72,17 +72,14 @@ RUN \
 RUN \
   mkdir -p ./App/authentication
 
-RUN echo -e '\
-  cat <<'EOF' >> ./App/authentication/config.json \n\
-  { \n\
-    "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want", \n\
-    "token" : "$ENV_DC_TOKEN", \n\
-    "spotify": { \n\
-        "cid": "$ENV_SPF_CID", \n\
-        "secret": "$ENV_SPF_SECRET" \n\
-    } \n\
-  } \
-  ' > ./App/authentication/config.json 
+RUN echo '{ \n' >> ./App/authentication/config.json 
+RUN echo '  "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want", \n' >> ./App/authentication/config.json
+RUN echo '  "token" : $ENV_DC_TOKEN, \n' >> ./App/authentication/config.json
+RUN echo '  "spotify": { \n' >> ./App/authentication/config.json
+RUN echo '    "cid": $ENV_SPF_CID, \n' >> ./App/authentication/config.json
+RUN echo '    "secret": $ENV_SPF_SECRET \n' >> ./App/authentication/config.json 
+RUN echo '  } \n' >> ./App/authentication/config.json 
+RUN echo '}' >> ./App/authentication/config.json 
 
 # Run in tmux
 RUN \
