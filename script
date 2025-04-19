@@ -18,4 +18,4 @@ tmux send -t App 'sudo python3 main.py' ENTER
 
 # now we bring the primary process back into the foreground
 # and leave it there
-tmux attach-seesion -t CF
+tmux attach-session -t CF
