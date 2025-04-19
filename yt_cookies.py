@@ -28,3 +28,7 @@ def get_cookies():
         f.writelines(to_netscape_string(cookie_data))
 
     driver.quit()
+
+
+if __name__ == "__main__":
+    get_cookies()
