@@ -90,6 +90,6 @@ RUN \
 
 # ---
 # Start Tunnel
-CMD ./script $ENV_TOKEN
+CMD ./script $ENV_CF_TOKEN
 # ---
 
