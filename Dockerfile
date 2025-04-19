@@ -70,17 +70,19 @@ RUN \
 
 # Create Credential
 RUN \
-  mkdir -p ./App/authentication && \
-  cat <<'EOF' >> ./App/authentication/config.json \
-  { \
-    "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want", \
-    "token" : "$ENV_DC_TOKEN", \
-    "spotify": { \
-        "cid": "$ENV_SPF_CID", \
-        "secret": "$ENV_SPF_SECRET" \
-    } \
+  mkdir -p ./App/authentication
+
+RUN echo -e '\
+  cat <<'EOF' >> ./App/authentication/config.json \n\
+  { \n\
+    "README": "Make a duplicate of this file and save it as config.json. Then configure the bot however you want", \n\
+    "token" : "$ENV_DC_TOKEN", \n\
+    "spotify": { \n\
+        "cid": "$ENV_SPF_CID", \n\
+        "secret": "$ENV_SPF_SECRET" \n\
+    } \n\
   } \
-  EOF
+  ' > ./App/authentication/config.json 
 
 # Run in tmux
 RUN \
