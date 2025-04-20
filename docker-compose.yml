@@ -11,3 +11,6 @@ services:
 
   bgutil-provider:
     image: brainicism/bgutil-ytdlp-pot-provider
+
+  yt-provider:
+    image: quay.io/invidious/youtube-trusted-session-generator:webserver
