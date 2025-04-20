@@ -2,9 +2,10 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.youtube.com	TRUE	/	TRUE	1760660233	__Secure-ROLLOUT_TOKEN	CI6AyJfftsKDChCM5IjiquWMAxiJgtLiquWMAw%3D%3D
-.youtube.com	TRUE	/	TRUE	1779668233	PREF	tz=Asia.Bangkok
-.youtube.com	TRUE	/	TRUE	1760660232	VISITOR_PRIVACY_METADATA	CgJUSBIEGgAgag%3D%3D
-.youtube.com	TRUE	/	TRUE	0	YSC	Xw1SWTQLqQw
-.youtube.com	TRUE	/	TRUE	1760660232	VISITOR_INFO1_LIVE	0WB3LB9a-C8
-.youtube.com	TRUE	/	TRUE	1745110032	GPS	1
+.youtube.com	TRUE	/	FALSE	1745109685	ST-1b	disableCache=true&itct=CA8QsV4iEwjKzbaSsOWMAxUx0qACHb3ACFw%3D&csn=VLIg6SlS36Qo4nf7&endpoint=%7B%22clickTrackingParams%22%3A%22CA8QsV4iEwjKzbaSsOWMAxUx0qACHb3ACFw%3D%22%2C%22commandMetadata%22%3A%7B%22webCommandMetadata%22%3A%7B%22url%22%3A%22%2F%22%2C%22webPageType%22%3A%22WEB_PAGE_TYPE_BROWSE%22%2C%22rootVe%22%3A3854%2C%22apiUrl%22%3A%22%2Fyoutubei%2Fv1%2Fbrowse%22%7D%7D%2C%22browseEndpoint%22%3A%7B%22browseId%22%3A%22FEwhat_to_watch%22%7D%7D
+.youtube.com	TRUE	/	TRUE	1760661676	__Secure-ROLLOUT_TOKEN	CKHf-42b9rX6gwEQlv6zkrDljAMY0JCAk7DljAM%3D
+.youtube.com	TRUE	/	TRUE	1779669676	PREF	tz=Asia.Bangkok
+.youtube.com	TRUE	/	TRUE	1760661675	VISITOR_PRIVACY_METADATA	CgJUSBIEGgAgYg%3D%3D
+.youtube.com	TRUE	/	TRUE	0	YSC	2arsAVOIXW8
+.youtube.com	TRUE	/	TRUE	1760661675	VISITOR_INFO1_LIVE	SIeX78sus9k
+.youtube.com	TRUE	/	TRUE	1745111475	GPS	1
