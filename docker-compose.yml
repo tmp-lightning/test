@@ -8,3 +8,6 @@ services:
     build:
       context: BadGuy-Music-DiscordBot
       dockerfile: ./Dockerfile
+
+  bgutil-provider:
+    image: brainicism/bgutil-ytdlp-pot-provider
