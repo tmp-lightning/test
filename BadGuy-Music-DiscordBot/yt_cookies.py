@@ -2,7 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from netscape_cookies import to_netscape_string
+import time
 
 
 def get_cookies():
@@ -15,6 +17,10 @@ def get_cookies():
     )
 
     driver.get("https://www.youtube.com")
+    time.sleep(3)
+
+    elem = driver.find_element(By.ID, "logo-icon")
+    elem.click()
 
     cookie_data = driver.get_cookies()
 
