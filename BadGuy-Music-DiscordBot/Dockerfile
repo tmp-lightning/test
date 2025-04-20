@@ -81,6 +81,9 @@ RUN echo '    "secret": "'"$ENV_SPF_SECRET"'"' >> ./App/authentication/config.js
 RUN echo '  }' >> ./App/authentication/config.json 
 RUN echo '}' >> ./App/authentication/config.json 
 
+COPY ./cookies.txt /App/databases/cookies.txt
+RUN chmod 755 /App/databases/cookies.txt
+
 # ---
 # Start BadGuy-Music-DiscordBot
 CMD ./script

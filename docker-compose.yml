@@ -8,5 +8,3 @@ services:
     build:
       context: BadGuy-Music-DiscordBot
       dockerfile: ./Dockerfile
-    volumes:
-      - cookies.txt:/App/databases/cookies.txt
