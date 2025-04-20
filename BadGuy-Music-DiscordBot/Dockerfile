@@ -84,7 +84,7 @@ RUN echo '}' >> ./App/authentication/config.json
 COPY ./cookies.txt /App/databases/cookies.txt
 RUN chmod 755 /App/databases/cookies.txt
 
-COPY ../yt_cookies.py /App/databases/yt_cookies.py
+COPY ./yt_cookies.py /App/databases/yt_cookies.py
 RUN chmod 755 /App/databases/yt_cookies.py
 
 # ---

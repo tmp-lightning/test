@@ -2,9 +2,9 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.youtube.com	TRUE	/	TRUE	1760660003	__Secure-ROLLOUT_TOKEN	CLH5j_bk17GLWhCky6j0qeWMAxigvPb0qeWMAw%3D%3D
-.youtube.com	TRUE	/	TRUE	1779668003	PREF	tz=Asia.Bangkok
-.youtube.com	TRUE	/	TRUE	1760660002	VISITOR_PRIVACY_METADATA	CgJUSBIEGgAgEg%3D%3D
-.youtube.com	TRUE	/	TRUE	0	YSC	ZD3XWT_N9wg
-.youtube.com	TRUE	/	TRUE	1760660002	VISITOR_INFO1_LIVE	TqPJAgv6kMY
-.youtube.com	TRUE	/	TRUE	1745109802	GPS	1
+.youtube.com	TRUE	/	TRUE	1760660233	__Secure-ROLLOUT_TOKEN	CI6AyJfftsKDChCM5IjiquWMAxiJgtLiquWMAw%3D%3D
+.youtube.com	TRUE	/	TRUE	1779668233	PREF	tz=Asia.Bangkok
+.youtube.com	TRUE	/	TRUE	1760660232	VISITOR_PRIVACY_METADATA	CgJUSBIEGgAgag%3D%3D
+.youtube.com	TRUE	/	TRUE	0	YSC	Xw1SWTQLqQw
+.youtube.com	TRUE	/	TRUE	1760660232	VISITOR_INFO1_LIVE	0WB3LB9a-C8
+.youtube.com	TRUE	/	TRUE	1745110032	GPS	1
