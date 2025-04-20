@@ -9,22 +9,23 @@ import time
 
 def get_cookies():
     options = Options()
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
+    # options.add_argument("--headless=new")
+    # options.add_argument("--no-sandbox")
+    # options.add_argument("--disable-dev-shm-usage")
+    # options.add_argument(
+    #     "--user-data-dir=/mnt/c/Users/3mper0r/AppData/Local/Google/Chrome/User Data"
+    # )  # Path to your chrome profile
+    # options.add_argument("--profile-directory=Profile 2")
     driver = webdriver.Chrome(
         service=ChromeService(ChromeDriverManager().install()), options=options
     )
 
     driver.get("https://www.youtube.com")
-    time.sleep(3)
-
-    elem = driver.find_element(By.ID, "logo-icon")
-    elem.click()
+    input("Enter to quit...")
 
     cookie_data = driver.get_cookies()
 
-    file_path = "BadGuy-Music-DiscordBot/cookies.txt"
+    file_path = "cookies.txt"
 
     # Save cookies to file in Netscape format
     with open(file_path, "w") as f:

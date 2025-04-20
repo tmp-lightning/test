@@ -87,11 +87,6 @@ RUN chmod 755 /App/databases/cookies.txt
 COPY ./yt_cookies.py /App/databases/yt_cookies.py
 RUN chmod 755 /App/databases/yt_cookies.py
 
-# CF WARP
-RUN curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-RUN sudo apt-get update && sudo apt-get install -y cloudflare-warp
-
 # ---
 # Start BadGuy-Music-DiscordBot
 CMD ./script
