@@ -16,4 +16,5 @@ services:
   #   image: quay.io/invidious/youtube-trusted-session-generator:webserver
 
   tor-proxy:
-    image: dperson/torproxy
+    # image: dperson/torproxy
+    image: dockage/tor-privoxy
