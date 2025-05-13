@@ -14,3 +14,6 @@ services:
 
   # yt-provider:
   #   image: quay.io/invidious/youtube-trusted-session-generator:webserver
+
+  tor-proxy:
+    image: frnksgr/tor
