@@ -27,16 +27,19 @@ RUN \
   apt-get install -y software-properties-common && \
   apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
 
+# Supervisord 
+RUN \
+  apt-get update && \
+  apt-get install -y supervisor
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # SSH
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
 RUN echo 'test:test' | chpasswd
 RUN echo 'test ALL=(ALL) NOPASSWD: ALL' | tee -a /etc/sudoers
 RUN service ssh start
 EXPOSE 22
-
-COPY ./script .
-
-RUN chmod 755 ./script
 
 #
 # BadGuy-Music-DiscordBot
@@ -81,14 +84,5 @@ RUN echo '    "secret": "'"$ENV_SPF_SECRET"'"' >> ./App/authentication/config.js
 RUN echo '  }' >> ./App/authentication/config.json 
 RUN echo '}' >> ./App/authentication/config.json 
 
-COPY ./cookies.txt /App/databases/cookies.txt
-RUN chmod 755 /App/databases/cookies.txt
-
-COPY ./yt_cookies.py /App/databases/yt_cookies.py
-RUN chmod 755 /App/databases/yt_cookies.py
-
-# ---
-# Start BadGuy-Music-DiscordBot
-CMD ./script
-# ---
+CMD ["/usr/bin/supervisord"]
 
