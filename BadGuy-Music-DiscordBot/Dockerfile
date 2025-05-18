@@ -25,7 +25,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
+  apt-get install -y curl git htop man unzip vim wget iputils-ping net-tools openssh-server sudo 
 
 # Supervisord 
 RUN \
@@ -59,13 +59,6 @@ RUN \
 RUN \
   apt-get install -y ffmpeg libxdamage1 xdg-utils fonts-liberation libnspr4 libnss3 libvulkan1 libxss1 libappindicator3-1 libindicator7 
 
-# Install Chrome
-RUN \
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-  sudo dpkg -i google-chrome-stable_current_amd64.deb && \
-  sudo apt --fix-broken install && \
-  sudo dpkg -i google-chrome-stable_current_amd64.deb
-
 # Download source code
 RUN \
   git clone https://github.com/miracleexotic/BadGuy-Music-DiscordBot.git ./App/ && \
@@ -82,7 +75,7 @@ RUN echo '  "spotify": {' >> ./App/authentication/config.json
 RUN echo '    "cid": "'"$ENV_SPF_CID"'",' >> ./App/authentication/config.json
 RUN echo '    "secret": "'"$ENV_SPF_SECRET"'"' >> ./App/authentication/config.json 
 RUN echo '  }' >> ./App/authentication/config.json 
-RUN echo '}' >> ./App/authentication/config.json 
+RUN echo '}' >> ./App/authentication/config.json
 
 CMD ["/usr/bin/supervisord"]
 
