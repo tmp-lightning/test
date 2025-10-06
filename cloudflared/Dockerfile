@@ -48,14 +48,3 @@ RUN \
 
 CMD ["/usr/bin/supervisord"]
 
-
-
-# COPY ./script .
-
-# RUN chmod 755 ./script
-
-# ---
-# Start Tunnel
-# CMD ./script $ENV_CF_TOKEN
-# ---
-
