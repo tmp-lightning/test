@@ -23,10 +23,12 @@ RUN \
   apt-get install -y software-properties-common && \
   apt-get install -y curl git htop man unzip vim wget iputils-ping openssh-server sudo 
 
-# Cloudflared
+# Supervisord 
 RUN \
-  curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
-  dpkg -i cloudflared.deb
+  apt-get update && \
+  apt-get install -y supervisor
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # SSH
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test 
@@ -35,12 +37,25 @@ RUN echo 'test ALL=(ALL) NOPASSWD: ALL' | tee -a /etc/sudoers
 RUN service ssh start
 EXPOSE 22
 
-COPY ./script .
+#
+# Cloudflared Proxy
+#
 
-RUN chmod 755 ./script
+# Install Cloudflared
+RUN \
+  curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && \
+  dpkg -i cloudflared.deb
+
+CMD ["/usr/bin/supervisord"]
+
+
+
+# COPY ./script .
+
+# RUN chmod 755 ./script
 
 # ---
 # Start Tunnel
-CMD ./script $ENV_CF_TOKEN
+# CMD ./script $ENV_CF_TOKEN
 # ---
 
