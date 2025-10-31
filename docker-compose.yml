@@ -1,0 +1,5 @@
+services:
+  cloudflared:
+    build:
+      context: cloudflared
+      dockerfile: ./Dockerfile
